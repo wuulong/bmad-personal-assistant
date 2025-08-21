@@ -130,3 +130,27 @@
 - **測試腳本程式碼 (test-script-code-tmpl)**: 概述測試腳本的需求、被測系統和測試框架。
 - **工具推薦報告 (tool-recommendation-report-tmpl)**: 概述使用者需要解決的問題和工具偏好。
 - **外部工具使用指引 (tool-usage-guide-tmpl)**: 概述工具名稱、使用者目標和使用者了解程度。
+
+## 安裝方法
+
+請依照以下步驟安裝本專案：
+
+1.  **準備一個空目錄**：請確保您準備的目錄是空的，並記住其絕對路徑。
+2.  **複製 BMAD-METHOD 專案**：
+    ```bash
+    git clone https://github.com/bmad-code-org/BMAD-METHOD.git
+    ```
+3.  **放置本專案**：將本專案（`bmad-personal-assistant`）放入 `BMAD-METHOD` 目錄下的 `expansion-packs` 目錄中。
+4.  **進入 BMAD-METHOD 目錄**：
+    ```bash
+    cd BMAD-METHOD
+    ```
+5.  **執行安裝命令**：
+    ```bash
+    npm run install:bmad
+    ```
+6.  **輸入空目錄的絕對路徑**：在安裝過程中，系統會提示您輸入準備好的空目錄的絕對路徑。
+7.  **選擇安裝選項**：建議不要選擇 `bmad-core`，只選擇 `bmad-personal-assistant`。
+8.  **完成安裝**：依照後續步驟完成安裝。
+
+**使用步驟**：請參考 `BMAD-METHOD` 專案的說明。如果您使用 Gemini CLI（目前僅在此環境測試過），可以直接在目標目錄開啟。
