@@ -1,0 +1,34 @@
+template:
+  id: tool-usage-guide-template
+  name: 外部工具使用指引
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/tool-guides/{{tool_name_slug}}-{{date}}.md
+    title: "外部工具使用指引：{{tool_name}}"
+
+sections:
+  - id: overview
+    title: 工具概述
+    type: template-text
+    template: |
+      **工具名稱**: {{tool_name}}
+      **使用者目標**: {{user_goal}}
+      **使用者了解程度**: {{user_current_knowledge | default('未提供')}}
+    instruction: 概述工具名稱、使用者目標和使用者了解程度。
+
+  - id: guide-content
+    title: 指引內容
+    type: template-text
+    template: |
+      {{tool_usage_guide}}
+    instruction: 呈現工具使用指引的詳細內容。
+
+  - id: examples
+    title: 範例程式碼
+    type: template-text
+    template: |
+      ```
+      {{example_scripts | default('無')}}
+      ```
+    instruction: 提供相關的範例程式碼或配置檔案。

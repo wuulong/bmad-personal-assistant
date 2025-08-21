@@ -1,0 +1,35 @@
+template:
+  id: test-script-code-template
+  name: 測試腳本程式碼
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/test-scripts/{{test_requirements_slug}}-{{date}}.md
+    title: "測試腳本：{{test_requirements_title}}"
+
+sections:
+  - id: overview
+    title: 腳本概述
+    type: template-text
+    template: |
+      **測試需求**: {{test_requirements_summary}}
+      **被測系統**: {{system_under_test_info | default('未提供')}}
+      **測試框架**: {{testing_framework_preference | default('未提供')}}
+    instruction: 概述測試腳本的需求、被測系統和測試框架。
+
+  - id: script-code
+    title: 程式碼
+    type: template-text
+    template: |
+      ```{{script_language}}
+      {{test_script_code}}
+      ```
+    instruction: 呈現生成的測試腳本程式碼。
+
+  - id: execution-report
+    title: 執行報告
+    type: template-text
+    template: |
+      **執行結果**: {{test_execution_report_summary}}
+      **通過/失敗**: {{pass_fail_status}}
+    instruction: 總結測試腳本的執行結果。

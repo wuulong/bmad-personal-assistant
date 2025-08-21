@@ -1,0 +1,26 @@
+template:
+  id: drafted-document-template
+  name: 草擬文件
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/drafts/{{document_type_slug}}-{{date}}.md
+    title: "草擬文件：{{document_type}}"
+
+sections:
+  - id: overview
+    title: 文件概述
+    type: template-text
+    template: |
+      **文件類型**: {{document_type}}
+      **文件目的**: {{purpose_of_document}}
+      **目標讀者**: {{target_audience | default('未提供')}}
+      **語氣風格**: {{tone_and_style | default('未提供')}}
+    instruction: 概述文件的類型、目的、目標讀者和語氣風格。
+
+  - id: document-content
+    title: 文件內容
+    type: template-text
+    template: |
+      {{drafted_document_content}}
+    instruction: 呈現草擬的文件內容。

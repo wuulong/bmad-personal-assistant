@@ -1,0 +1,33 @@
+template:
+  id: refined-text-template
+  name: 潤飾後文本
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/refined-texts/{{original_text_slug}}-{{date}}.md
+    title: "潤飾後文本：{{original_text_title}}"
+
+sections:
+  - id: overview
+    title: 文本潤飾概述
+    type: template-text
+    template: |
+      **原始文本來源**: {{original_text_source | default('未提供')}}
+      **潤飾目標**: {{refinement_goal}}
+      **目標讀者**: {{target_audience | default('未提供')}}
+      **語氣風格偏好**: {{tone_and_style_preference | default('未提供')}}
+    instruction: 概述文本潤飾的來源、目標和偏好。
+
+  - id: refined-content
+    title: 潤飾後內容
+    type: template-text
+    template: |
+      {{refined_text_content}}
+    instruction: 呈現經過審閱和潤飾後的文本內容。
+
+  - id: revision-summary
+    title: 修訂摘要
+    type: template-text
+    template: |
+      {{revision_summary | default('無')}}
+    instruction: 總結文本修改的主要點和理由。

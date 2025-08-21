@@ -1,0 +1,32 @@
+template:
+  id: generated-report-content-template
+  name: 生成報告內容
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/reports/{{report_topic_slug}}-{{date}}.md
+    title: "報告內容：{{report_topic}}"
+
+sections:
+  - id: overview
+    title: 報告概述
+    type: template-text
+    template: |
+      **報告主題**: {{report_topic}}
+      **報告目的**: {{report_purpose}}
+      **目標讀者**: {{target_audience | default('未提供')}}
+    instruction: 概述報告的主題、目的和目標讀者。
+
+  - id: report-content
+    title: 報告內容
+    type: template-text
+    template: |
+      {{generated_report_content}}
+    instruction: 呈現生成的報告內容。
+
+  - id: key-findings-summary
+    title: 主要發現摘要
+    type: template-text
+    template: |
+      {{key_findings_summary | default('無')}}
+    instruction: 總結報告中的主要發現。

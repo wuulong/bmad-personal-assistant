@@ -1,0 +1,36 @@
+template:
+  id: structured-data-template
+  name: 結構化數據輸出
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/structured-data/{{unstructured_data_slug}}-{{date}}.md
+    title: "結構化數據：{{unstructured_data_title}}"
+
+sections:
+  - id: overview
+    title: 數據結構化概述
+    type: template-text
+    template: |
+      **原始數據來源**: {{unstructured_data_source | default('未提供')}}
+      **目標格式**: {{target_format}}
+      **結構定義**: {{schema_definition | default('未提供')}}
+    instruction: 概述數據結構化的來源、目標格式和結構定義。
+
+  - id: structured-output
+    title: 結構化數據內容
+    type: template-text
+    template: |
+      ```{{target_format}}
+      {{structured_data_content}}
+      ```
+    instruction: 呈現轉換後的結構化數據內容。
+
+  - id: conversion-report
+    title: 轉換報告
+    type: template-text
+    template: |
+      **轉換過程**: {{conversion_process}}
+      **遇到的問題**: {{issues_encountered | default('無')}}
+      **假設**: {{assumptions_made | default('無')}}
+    instruction: 記錄數據轉換過程中的細節、問題和假設。

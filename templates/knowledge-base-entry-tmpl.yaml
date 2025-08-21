@@ -1,0 +1,33 @@
+template:
+  id: knowledge-base-entry-template
+  name: 知識庫條目
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/knowledge-base/{{entry_title_slug}}-{{date}}.md
+    title: "知識庫條目：{{entry_title}}"
+
+sections:
+  - id: entry-details
+    title: 條目詳情
+    type: template-text
+    template: |
+      **標題**: {{entry_title}}
+      **標籤**: {{tags | join(', ') | default('無')}}
+      **相關條目**: {{related_entries | join(', ') | default('無')}}
+    instruction: 知識庫條目的基本資訊。
+
+  - id: content
+    title: 內容
+    type: template-text
+    template: |
+      {{entry_content}}
+    instruction: 知識庫條目的主要內容。
+
+  - id: status
+    title: 狀態
+    type: template-text
+    template: |
+      **操作**: {{operation_type}}
+      **訊息**: {{status_message}}
+    instruction: 條目建立或更新的狀態訊息。

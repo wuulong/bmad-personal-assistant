@@ -1,0 +1,63 @@
+template:
+  id: learning-plan-template
+  name: 學習計畫文件
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/learning-plans/{{learning_goal_slug}}-{{date}}.md
+    title: "學習計畫：{{learning_goal}}"
+
+sections:
+  - id: overview
+    title: 學習目標概述
+    type: template-text
+    template: |
+      **學習目標**: {{learning_goal}}
+      **可用時間**: {{available_time}}
+      **目前知識水平**: {{current_knowledge_level | default('未提供')}}
+      **偏好學習方式**: {{preferred_learning_style | default('未提供')}}
+    instruction: 概述學習目標和相關背景資訊。
+
+  - id: learning-path
+    title: 學習路徑與階段
+    type: bullet-list
+    instruction: 規劃學習的階段、里程碑和內容順序。
+    template: |
+      - **階段一**: {{phase1_title}}
+        - 目標: {{phase1_goal}}
+        - 內容: {{phase1_content}}
+        - 預計時間: {{phase1_time}}
+      - **階段二**: {{phase2_title}}
+        - 目標: {{phase2_goal}}
+        - 內容: {{phase2_content}}
+        - 預計時間: {{phase2_time}}
+      # ... 更多階段
+    elicit: true # This section might require user interaction to refine
+
+  - id: recommended-resources
+    title: 推薦學習資源
+    type: bullet-list
+    instruction: 列出推薦的書籍、課程、網站等學習資源。
+    template: |
+      - **書籍**: {{book_title}} (作者: {{book_author}})
+      - **線上課程**: {{course_name}} (平台: {{course_platform}})
+      - **網站/工具**: {{website_name}} (URL: {{website_url}})
+      # ... 更多資源
+
+  - id: time-management
+    title: 時間管理與進度追蹤
+    type: template-text
+    template: |
+      建議每日/每週投入時間：{{daily_weekly_time}}
+      進度追蹤方式：{{progress_tracking_method}}
+      彈性時間預留：{{flex_time}}
+    instruction: 提供時間管理和進度追蹤的建議。
+
+  - id: learning-tips
+    title: 學習技巧與策略
+    type: bullet-list
+    instruction: 提供高效學習的技巧和策略。
+    template: |
+      - {{tip1}}
+      - {{tip2}}
+      # ... 更多技巧

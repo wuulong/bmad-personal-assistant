@@ -1,0 +1,36 @@
+template:
+  id: database-operation-result-template
+  name: 資料庫操作結果
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/database-operations/{{database_name_slug}}-{{operation_type_slug}}-{{date}}.md
+    title: "資料庫操作結果：{{database_name}} - {{operation_type}}"
+
+sections:
+  - id: overview
+    title: 操作概述
+    type: template-text
+    template: |
+      **資料庫名稱**: {{database_name}}
+      **操作類型**: {{operation_type}}
+      **操作時間**: {{date}}
+    instruction: 概述資料庫操作的名稱、類型和時間。
+
+  - id: operation-details
+    title: 操作詳情
+    type: template-text
+    template: |
+      **操作結果**: {{operation_result}}
+      **更新後狀態**: {{updated_database_state | default('未提供')}}
+      **錯誤訊息**: {{error_message | default('無')}}
+    instruction: 記錄資料庫操作的結果、狀態和任何錯誤訊息。
+
+  - id: query-results
+    title: 查詢結果
+    type: template-text
+    template: |
+      ```json
+      {{query_results | tojson(indent=2)}}
+      ```
+    instruction: 如果操作類型是查詢，則顯示查詢結果。

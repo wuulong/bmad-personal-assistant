@@ -1,0 +1,36 @@
+template:
+  id: summarized-findings-template
+  name: 研究發現總結報告
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/summaries/{{summary_purpose_slug}}-{{date}}.md
+    title: "研究發現總結：{{summary_purpose}}"
+
+sections:
+  - id: overview
+    title: 總結概述
+    type: template-text
+    template: |
+      **總結目的**: {{summary_purpose}}
+      **目標受眾**: {{target_audience | default('未提供')}}
+      **期望長度**: {{length_preference | default('未提供')}}
+    instruction: 概述總結的目的和相關背景資訊。
+
+  - id: key-conclusions
+    title: 核心結論
+    type: bullet-list
+    instruction: 列出研究或數據分析的主要結論。
+    template: |
+      - {{conclusion1}}
+      - {{conclusion2}}
+      # ... 更多結論
+
+  - id: supporting-points
+    title: 支持性要點
+    type: bullet-list
+    instruction: 提供支持核心結論的關鍵證據或數據。
+    template: |
+      - {{point1}}
+      - {{point2}}
+      # ... 更多要點

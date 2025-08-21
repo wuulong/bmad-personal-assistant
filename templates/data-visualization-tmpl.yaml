@@ -1,0 +1,49 @@
+template:
+  id: data-visualization-template
+  name: 數據視覺化建議
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/visualizations/{{visualization_goal_slug}}-{{date}}.md
+    title: "數據視覺化建議：{{visualization_goal}}"
+
+sections:
+  - id: overview
+    title: 視覺化概述
+    type: template-text
+    template: |
+      **視覺化目標**: {{visualization_goal}}
+      **目標受眾**: {{target_audience | default('未提供')}}
+      **偏好圖表類型**: {{preferred_chart_types | default('未提供')}}
+    instruction: 概述數據視覺化的目標、受眾和偏好圖表類型。
+
+  - id: visualization-suggestion
+    title: 視覺化建議
+    type: template-text
+    template: |
+      **建議圖表類型**: {{suggested_chart_type}}
+      **建議理由**: {{suggestion_reason}}
+    instruction: 提供建議的圖表類型和其理由。
+
+  - id: chart-description
+    title: 圖表描述
+    type: template-text
+    template: |
+      {{chart_description}}
+    instruction: 提供詳細的圖表描述，可用於手動繪製或程式生成。
+
+  - id: chart-code-example
+    title: 程式碼範例
+    type: template-text
+    template: |
+      ```
+      {{chart_code_example | default('無')}}
+      ```
+    instruction: 提供生成圖表的程式碼範例。
+
+  - id: key-insights
+    title: 關鍵洞察
+    type: template-text
+    template: |
+      {{key_insights_from_chart | default('無')}}
+    instruction: 從視覺化中提取的關鍵洞察。

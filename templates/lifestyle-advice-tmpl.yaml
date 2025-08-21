@@ -1,0 +1,34 @@
+template:
+  id: lifestyle-advice-template
+  name: 生活建議文件
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/lifestyle-advice/{{advice_topic_slug}}-{{date}}.md
+    title: "生活建議：{{advice_topic}}"
+
+sections:
+  - id: overview
+    title: 建議概述
+    type: template-text
+    template: |
+      **建議主題**: {{advice_topic}}
+      **使用者背景**: {{user_context | default('未提供')}}
+      **建議格式**: {{advice_format_preference | default('未提供')}}
+    instruction: 概述建議的主題、使用者背景和建議格式。
+
+  - id: advice-content
+    title: 建議內容
+    type: template-text
+    template: |
+      {{lifestyle_advice_content}}
+    instruction: 呈現具體的生活建議內容。
+
+  - id: actionable-steps
+    title: 可行步驟
+    type: bullet-list
+    instruction: 列出可供使用者立即採取的行動步驟。
+    template: |
+      - {{step1}}
+      - {{step2}}
+      # ... 更多步驟

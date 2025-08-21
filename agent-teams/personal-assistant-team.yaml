@@ -1,0 +1,13 @@
+bundle:
+  name: 個人助理團隊
+  icon: 👥
+  description: 專為個人和專業人士設計的智慧助理團隊，提供學習、研究、數據管理、IT 協助、文件報告和生活管理等全方位服務。
+agents:
+  - personal-assistant-coordinator
+  - learning-facilitator
+  - research-analyst
+  - data-organizer
+  - it-collaborator
+  - document-report-specialist
+  - life-manager
+workflows: []

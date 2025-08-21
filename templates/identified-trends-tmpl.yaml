@@ -1,0 +1,35 @@
+template:
+  id: identified-trends-template
+  name: 趨勢識別報告
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/trends/{{trend_focus_slug}}-{{date}}.md
+    title: "趨勢識別報告：{{trend_focus}}"
+
+sections:
+  - id: overview
+    title: 報告概述
+    type: template-text
+    template: |
+      **趨勢關注點**: {{trend_focus}}
+      **時間範圍**: {{time_frame | default('未提供')}}
+    instruction: 概述趨勢分析的關注點和時間範圍。
+
+  - id: identified-trends
+    title: 識別出的趨勢
+    type: bullet-list
+    instruction: 列出從數據中識別出的主要趨勢。
+    template: |
+      - **趨勢名稱**: {{trend_name}}
+        - **描述**: {{trend_description}}
+        - **潛在影響**: {{potential_impact}}
+      # ... 更多趨勢
+
+  - id: future-projections
+    title: 未來預測與建議
+    type: template-text
+    template: |
+      **基於趨勢的預測**: {{projection}}
+      **建議行動**: {{recommended_action}}
+    instruction: 提供基於趨勢的未來預測和建議行動。

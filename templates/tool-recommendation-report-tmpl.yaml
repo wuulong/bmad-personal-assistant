@@ -1,0 +1,39 @@
+template:
+  id: tool-recommendation-report-template
+  name: 工具推薦報告
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/tool-recommendations/{{problem_description_slug}}-{{date}}.md
+    title: "工具推薦報告：{{problem_description_title}}"
+
+sections:
+  - id: overview
+    title: 報告概述
+    type: template-text
+    template: |
+      **問題描述**: {{problem_description}}
+      **偏好工具類別**: {{tool_category_preference | default('未提供')}}
+      **平台偏好**: {{platform_preference | default('未提供')}}
+      **預算限制**: {{budget_constraint | default('未提供')}}
+    instruction: 概述使用者需要解決的問題和工具偏好。
+
+  - id: recommended-tools
+    title: 推薦工具清單
+    type: bullet-list
+    instruction: 列出推薦的工具及其簡要介紹。
+    template: |
+      - **工具名稱**: {{tool_name}}
+        - **簡介**: {{tool_description}}
+        - **主要功能**: {{main_features}}
+        - **優點**: {{pros}}
+        - **缺點**: {{cons}}
+        - **推薦理由**: {{recommendation_reason}}
+      # ... 更多工具
+
+  - id: comparison
+    title: 工具比較
+    type: template-text
+    template: |
+      {{tool_comparison_summary | default('無')}}
+    instruction: 提供不同工具之間的比較摘要。

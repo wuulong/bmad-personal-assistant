@@ -1,0 +1,35 @@
+template:
+  id: analysis-report-template
+  name: 數據分析報告
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/analysis-reports/{{analysis_goal_slug}}-{{date}}.md
+    title: "數據分析報告：{{analysis_goal}}"
+
+sections:
+  - id: overview
+    title: 報告概述
+    type: template-text
+    template: |
+      **分析目標**: {{analysis_goal}}
+      **數據集**: {{data_set_description | default('未提供')}}
+      **分析方法**: {{analysis_method | default('未提供')}}
+    instruction: 概述分析目標、數據集和方法。
+
+  - id: key-findings
+    title: 關鍵發現
+    type: bullet-list
+    instruction: 列出數據分析的主要發現和洞察。
+    template: |
+      - {{finding1}}
+      - {{finding2}}
+      # ... 更多發現
+
+  - id: conclusions
+    title: 結論與建議
+    type: template-text
+    template: |
+      **結論**: {{conclusion}}
+      **建議**: {{recommendation}}
+    instruction: 總結分析結論並提出建議。

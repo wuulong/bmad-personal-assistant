@@ -1,0 +1,43 @@
+template:
+  id: cleaned-data-template
+  name: 數據清理報告
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/cleaned-data/{{data_set_name_slug}}-{{date}}.md
+    title: "數據清理報告：{{data_set_name}}"
+
+sections:
+  - id: overview
+    title: 清理概述
+    type: template-text
+    template: |
+      **原始數據集**: {{raw_data_source | default('未提供')}}
+      **清理日期**: {{date}}
+    instruction: 概述數據清理的來源和日期。
+
+  - id: identified-issues
+    title: 識別出的問題
+    type: bullet-list
+    instruction: 列出數據中識別出的問題類型和數量。
+    template: |
+      - **問題類型**: {{issue_type}}
+        - **數量**: {{issue_count}}
+        - **範例**: {{issue_example}}
+      # ... 更多問題
+
+  - id: cleaning-strategy
+    title: 清理策略
+    type: template-text
+    template: |
+      **採用的策略**: {{strategy_description}}
+      **修正建議**: {{suggested_corrections | default('無')}}
+    instruction: 描述數據清理所採用的策略和任何手動修正建議。
+
+  - id: cleaned-data-summary
+    title: 清理後數據摘要
+    type: template-text
+    template: |
+      **清理後數據品質**: {{data_quality_assessment}}
+      **主要變化**: {{major_changes}}
+    instruction: 總結清理後數據的品質和主要變化。

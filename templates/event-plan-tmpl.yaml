@@ -1,0 +1,46 @@
+template:
+  id: event-plan-template
+  name: 活動規劃文件
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/event-plans/{{event_type_slug}}-{{date}}.md
+    title: "活動規劃：{{event_type}}"
+
+sections:
+  - id: overview
+    title: 活動概述
+    type: template-text
+    template: |
+      **活動類型**: {{event_type}}
+      **活動目的**: {{event_goal}}
+      **初步細節**: {{event_details | default('未提供')}}
+      **預算限制**: {{budget_limit | default('未提供')}}
+      **使用者偏好**: {{user_preferences | default('未提供')}}
+    instruction: 概述活動的類型、目的、初步細節、預算和使用者偏好。
+
+  - id: proposed-plans
+    title: 建議方案
+    type: bullet-list
+    instruction: 提供多個可行的活動方案。
+    template: |
+      - **方案名稱**: {{plan_name}}
+        - **日期/時間**: {{plan_datetime}}
+        - **地點**: {{plan_location}}
+        - **預計費用**: {{plan_cost}}
+        - **主要內容**: {{plan_content}}
+      # ... 更多方案
+
+  - id: detailed-planning
+    title: 細節規劃
+    type: template-text
+    template: |
+      {{detailed_planning_summary | default('無')}}
+    instruction: 協助規劃活動的具體細節。
+
+  - id: coordination-summary
+    title: 協調摘要
+    type: template-text
+    template: |
+      {{coordination_summary | default('無')}}
+    instruction: 總結活動協調過程。

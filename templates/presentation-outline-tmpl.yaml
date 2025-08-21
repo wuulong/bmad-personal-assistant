@@ -1,0 +1,33 @@
+template:
+  id: presentation-outline-template
+  name: 簡報大綱
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/presentations/{{presentation_topic_slug}}-outline-{{date}}.md
+    title: "簡報大綱：{{presentation_topic}}"
+
+sections:
+  - id: overview
+    title: 簡報概述
+    type: template-text
+    template: |
+      **簡報主題**: {{presentation_topic}}
+      **簡報目的**: {{presentation_purpose}}
+      **目標聽眾**: {{target_audience | default('未提供')}}
+      **時間限制**: {{time_limit | default('未提供')}}
+    instruction: 概述簡報的主題、目的、聽眾和時間限制。
+
+  - id: outline-content
+    title: 大綱內容
+    type: template-text
+    template: |
+      {{presentation_outline_content}}
+    instruction: 呈現簡報大綱的詳細內容。
+
+  - id: slide-breakdown
+    title: 投影片分解
+    type: template-text
+    template: |
+      {{slide_breakdown | default('無')}}
+    instruction: 提供建議的投影片數量和每張投影片的內容要點。
